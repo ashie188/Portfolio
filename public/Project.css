@@ -1,0 +1,20 @@
+.projects{
+  margin:40px;
+  padding:20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap:25px;
+  justify-content: center;
+  align-items: center;
+}
+.innerprojects{
+  display: flex;
+  height:350px;
+  width:600px;
+  border:1px solid white;
+}
+.innerprojectimg{
+  width: 320px;
+  border-right: 1px solid white;
+}
+
