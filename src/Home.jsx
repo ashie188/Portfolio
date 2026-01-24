@@ -49,23 +49,11 @@ export default function Home() {
       </div>
       </div>
       <div className="projects">
-        <div className="innerprojects">
-          <div className="innerprojectimg">
-            <img src="./E-Commerce_ss.png" alt="ecommerce_img" width="320px" height="350px"/>
-          </div>
-          <div className="innerprojectcontent">
-            <p>about to write the e-commerce info</p>
-          </div>
+        <div className="textsection-projects">
+          <h1>Featured</h1>
+          <h2>Projects</h2>
         </div>
-        <div className="innerprojects">
-          
-        </div>
-        <div className="innerprojects">
-          
-        </div>
-        <div className="innerprojects">
-          
-        </div>
+        <div className="projectssection-projects"></div>
       </div>
     </div>
   );
