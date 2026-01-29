@@ -51,9 +51,13 @@ export default function Home() {
       <div className="projects">
         <div className="textsection-projects">
           <h1>Featured</h1>
-          <h2>Projects</h2>
+          <h3>Projects</h3>
         </div>
-        <div className="projectssection-projects"></div>
+        <div className="projectssection-projects">
+          <div className="project-card">
+            
+          </div>
+        </div>
       </div>
     </div>
   );
