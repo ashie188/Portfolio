@@ -1,0 +1,652 @@
+/* =========================================================
+   FEATURED SPORTILO PROJECT
+   ========================================================= */
+
+.sportilo-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  overflow: hidden;
+  border: 1px solid rgba(109, 74, 255, 0.32);
+  border-radius: 24px;
+  background: linear-gradient(
+    145deg,
+    rgba(109, 74, 255, 0.08),
+    rgba(18, 20, 38, 0.96) 58%,
+    rgba(10, 11, 20, 0.98)
+  );
+}
+
+.sportilo-copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 36px;
+}
+
+.sportilo-copy h3 {
+  margin: 18px 0 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(28px, 3vw, 34px);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.sportilo-copy > p {
+  max-width: 58ch;
+  margin: 14px 0 0;
+  color: var(--secondary);
+  font-size: 14.5px;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+}
+
+.sportilo-copy .tag-list {
+  margin-top: 18px;
+}
+
+.sportilo-copy .project-actions {
+  margin-top: 24px;
+  padding-top: 0;
+}
+
+.project-badge {
+  display: inline-flex;
+  max-width: 100%;
+  align-items: center;
+  padding: 5px 14px;
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(34, 211, 238, 0.12),
+    rgba(139, 92, 246, 0.12)
+  );
+  color: #67e8f9;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.sportilo-visual {
+  position: relative;
+  min-width: 0;
+  min-height: 380px;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.sportilo-visual > img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.sportilo-visual::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(10, 11, 20, 0.38), transparent 75%);
+  content: "";
+  pointer-events: none;
+}
+
+.sportilo-chips {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  z-index: 2;
+  display: flex;
+  max-width: 75%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  transform: translateY(-50%);
+}
+
+.sportilo-chips span {
+  max-width: 100%;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  background: rgba(18, 20, 38, 0.9);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.sportilo-emoji {
+  position: absolute;
+  bottom: 18px;
+  left: 20px;
+  z-index: 2;
+  display: flex;
+  gap: 12px;
+  font-size: 20px;
+}
+
+/* =========================================================
+   FEATURED PROJECT CAROUSEL
+   ========================================================= */
+
+.featured-carousel {
+  min-width: 0;
+  margin-top: 36px;
+}
+
+.featured-grid {
+  display: grid;
+  grid-auto-columns: calc((100% - 48px) / 3);
+  grid-auto-flow: column;
+  gap: 24px;
+  min-width: 0;
+  margin-inline: -4px;
+  padding: 4px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-padding-inline: 4px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.featured-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.featured-grid > .project-card {
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(139, 92, 246, 0.3);
+  cursor: pointer;
+  transition:
+    width 220ms ease,
+    background 220ms ease;
+}
+
+.carousel-dot[aria-current="true"] {
+  width: 26px;
+  background: linear-gradient(90deg, #8b5cf6, #22d3ee);
+}
+
+/* =========================================================
+   SHARED PROJECT CARD
+   ========================================================= */
+
+.project-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 18px;
+  background: linear-gradient(
+    180deg,
+    rgba(139, 92, 246, 0.065),
+    rgba(255, 255, 255, 0.012)
+  );
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.project-image {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  min-width: 0;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(139, 92, 246, 0.16);
+  background: var(--surface);
+}
+
+.project-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 350ms ease;
+}
+
+.project-card-content {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.project-category {
+  margin: 0 0 7px;
+  color: var(--violet);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.055em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.project-card h3 {
+  max-width: 100%;
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.project-description {
+  width: 100%;
+  margin: 10px 0 0;
+  color: var(--secondary);
+  font-size: 13.5px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
+.project-card-content > .tag-list {
+  width: 100%;
+  align-items: flex-start;
+  gap: 7px;
+  margin-top: 16px;
+}
+
+.project-card-content .tag {
+  max-width: 100%;
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.project-actions .button {
+  min-height: 40px;
+  padding: 9px 15px;
+  border-radius: 10px;
+  font-size: 13px;
+  white-space: normal;
+}
+
+.project-actions .button-disabled {
+  cursor: default;
+  box-shadow: none;
+}
+
+.project-actions .button-disabled:hover {
+  transform: none;
+}
+
+/* =========================================================
+   ALL PROJECTS GRID
+   ========================================================= */
+
+.all-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 22px;
+}
+
+.project-card-compact {
+  height: 100%;
+}
+
+.project-card-compact .project-image {
+  aspect-ratio: 16 / 9;
+}
+
+.project-card-compact .project-card-content {
+  padding: 20px;
+}
+
+.project-card-compact h3 {
+  font-size: 18px;
+}
+
+.project-card-compact .project-description {
+  flex: 1;
+}
+
+.project-card-compact .tag-list {
+  margin-top: 16px;
+}
+
+.compact-project-actions {
+  width: 100%;
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.compact-project-actions .button {
+  display: inline-flex;
+  width: 100%;
+  min-height: 42px;
+  justify-content: center;
+  gap: 9px;
+}
+
+.compact-project-actions .button svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+
+/* =========================================================
+   INTERACTION & ACCESSIBILITY
+   ========================================================= */
+
+.project-actions a:focus-visible,
+.compact-link:focus-visible,
+.carousel-dot:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 4px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .project-card:hover {
+    border-color: rgba(139, 92, 246, 0.42);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+    transform: translateY(-3px);
+  }
+
+  .project-card:hover .project-image img {
+    transform: scale(1.025);
+  }
+
+  .compact-project-actions .button:hover {
+    border-color: var(--violet);
+  }
+
+  .compact-link:hover {
+    border-color: var(--violet);
+    color: var(--text);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE: TABLETS & SMALL LAPTOPS
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .all-projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .featured-grid {
+    grid-auto-columns: calc((100% - 24px) / 2);
+  }
+
+  .sportilo-copy {
+    padding: 30px;
+  }
+
+  .sportilo-visual {
+    min-height: 340px;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE: MOBILE
+   ========================================================= */
+
+@media (max-width: 720px) {
+  .sportilo-feature {
+    grid-template-columns: minmax(0, 1fr);
+    border-radius: 18px;
+  }
+
+  .sportilo-visual {
+    order: -1;
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+  }
+
+  .sportilo-visual::after {
+    background: linear-gradient(0deg, rgba(10, 11, 20, 0.32), transparent 70%);
+  }
+
+  .sportilo-copy {
+    padding: 26px 22px 28px;
+  }
+
+  .sportilo-copy h3 {
+    font-size: 28px;
+  }
+
+  .sportilo-chips {
+    right: 12px;
+    max-width: 76%;
+    gap: 7px;
+  }
+
+  .sportilo-chips span {
+    padding: 7px 10px;
+    font-size: 11px;
+  }
+
+  .sportilo-emoji {
+    bottom: 12px;
+    left: 12px;
+    font-size: 16px;
+  }
+
+  .featured-grid {
+    grid-auto-columns: 82%;
+    gap: 16px;
+  }
+
+  .all-projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .project-card-content,
+  .project-card-compact .project-card-content {
+    padding: 17px;
+  }
+
+  .project-card h3,
+  .project-card-compact h3 {
+    font-size: 17px;
+  }
+
+  .project-description {
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  .project-actions {
+    gap: 8px;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE: NARROW PHONES (360px+)
+   ========================================================= */
+
+@media (max-width: 520px) {
+  .all-projects-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .project-card-compact .project-image {
+    aspect-ratio: 16 / 9;
+  }
+
+  .project-card-content,
+  .project-card-compact .project-card-content {
+    padding: 18px;
+  }
+
+  .project-card h3,
+  .project-card-compact h3 {
+    font-size: 19px;
+  }
+
+  .project-description {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .project-card-content > .tag-list {
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .project-card-content .tag {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+
+  .compact-project-actions {
+    padding-top: 18px;
+  }
+
+  .compact-project-actions .button {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  .featured-grid {
+    grid-auto-columns: 88%;
+    gap: 14px;
+  }
+
+  .sportilo-copy {
+    padding: 23px 18px 24px;
+  }
+
+  .sportilo-copy h3 {
+    font-size: 27px;
+  }
+
+  .sportilo-copy > p {
+    font-size: 14px;
+  }
+
+  .sportilo-visual {
+    aspect-ratio: 4 / 3;
+  }
+
+  .sportilo-chips {
+    max-width: 80%;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE: VERY NARROW PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+  .sportilo-copy {
+    padding-inline: 16px;
+  }
+
+  .sportilo-copy h3 {
+    font-size: 25px;
+  }
+
+  .sportilo-visual {
+    aspect-ratio: 4 / 3;
+  }
+
+  .sportilo-chips {
+    right: 9px;
+    max-width: 82%;
+    gap: 6px;
+  }
+
+  .sportilo-chips span {
+    padding: 6px 8px;
+    font-size: 10px;
+  }
+
+  .sportilo-emoji {
+    bottom: 10px;
+    left: 10px;
+    font-size: 15px;
+  }
+
+  .project-card-content,
+  .project-card-compact .project-card-content {
+    padding: 16px;
+  }
+
+  .project-card h3,
+  .project-card-compact h3 {
+    font-size: 18px;
+  }
+
+  .project-description {
+    font-size: 13.5px;
+  }
+
+  .project-actions .button {
+    font-size: 13px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .project-image img,
+  .carousel-dot,
+  .project-actions .button,
+  .compact-link {
+    transition: none;
+  }
+
+  .project-card:hover,
+  .project-card:hover .project-image img {
+    transform: none;
+  }
+}

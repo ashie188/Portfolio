@@ -1,0 +1,182 @@
+/* ---------- Skills ---------- */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.skill-card {
+  border: 1px solid rgba(139, 92, 246, 0.22);
+  border-radius: 18px;
+  background: linear-gradient(
+    180deg,
+    rgba(139, 92, 246, 0.07),
+    rgba(10, 6, 24, 0.55)
+  );
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition:
+    border-color 200ms ease,
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.skill-card:hover {
+  border-color: rgba(139, 92, 246, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px rgba(76, 29, 149, 0.28);
+}
+
+/* ---------- Shared accordion behaviour ---------- */
+
+.card-toggle {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 20px;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font-family: inherit;
+  text-align: left;
+  cursor: default;
+}
+
+.card-toggle h3 {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 16.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.card-toggle:focus-visible {
+  outline: 2px solid var(--violet);
+  outline-offset: 2px;
+  border-radius: 12px;
+}
+
+.card-toggle-icon {
+  flex: none;
+  display: inline-flex;
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  border-radius: 11px;
+  background: linear-gradient(
+    135deg,
+    rgba(124, 58, 237, 0.32),
+    rgba(34, 211, 238, 0.12)
+  );
+  color: #a78bfa;
+}
+
+.card-toggle-icon svg {
+  width: 19px;
+  height: 19px;
+}
+
+.chevron {
+  flex: none;
+  display: none;
+  width: 18px;
+  height: 18px;
+  margin-left: auto;
+  color: var(--muted);
+  transition:
+    transform 300ms ease,
+    color 200ms ease;
+}
+
+.accordion-card.is-open .chevron {
+  transform: rotate(180deg);
+  color: #a78bfa;
+}
+
+.accordion-content {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 320ms ease;
+}
+
+.accordion-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ---------- Skill items ---------- */
+
+.skill-card-body {
+  padding: 2px 20px 20px;
+}
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 14px;
+}
+
+.skill-item {
+  display: flex;
+  width: 62px;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.skill-item img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  transition: transform 180ms ease;
+}
+
+.skill-item:hover img {
+  transform: translateY(-3px) scale(1.1);
+}
+
+.skill-custom-icon {
+  display: inline-flex;
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  color: #a78bfa;
+}
+
+.skill-custom-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.skill-item span {
+  color: var(--secondary);
+  font-size: 11px;
+  line-height: 1.3;
+  text-align: center;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 980px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .accordion-card:not(.is-open) .accordion-content {
+    grid-template-rows: 0fr;
+  }
+
+  .card-toggle {
+    cursor: pointer;
+  }
+
+  .chevron {
+    display: block;
+  }
+}

@@ -1,0 +1,141 @@
+.site-footer {
+  border-top: 1px solid var(--border);
+  background: #080911;
+}
+
+.footer-main,
+.footer-bottom {
+  width: min(1180px, calc(100% - 48px));
+  margin-inline: auto;
+}
+
+.footer-main {
+  display: flex;
+  min-height: 100px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-block: 24px;
+}
+
+.footer-brand {
+  font-size: 19px;
+}
+
+.footer-role {
+  margin: 0;
+  color: var(--secondary);
+  font-size: 12px;
+}
+
+.footer-nav,
+.footer-socials {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-nav a {
+  color: var(--secondary);
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.footer-nav a:hover {
+  color: var(--cyan);
+}
+
+.footer-socials a {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--secondary);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.footer-socials a:hover {
+  border-color: var(--violet);
+  color: var(--text);
+}
+
+.footer-bottom {
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.back-to-top {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--text);
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.back-to-top:hover {
+  border-color: var(--violet);
+}
+
+@media (max-width: 900px) {
+  .footer-main {
+    flex-wrap: wrap;
+  }
+
+  .footer-role {
+    width: 100%;
+    order: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-main,
+  .footer-bottom {
+    width: calc(100% - 36px);
+  }
+
+  .footer-main {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .footer-role {
+    order: initial;
+  }
+
+  .footer-nav {
+    gap: 14px;
+  }
+
+  .footer-socials {
+    gap: 10px;
+  }
+
+  .footer-bottom {
+    padding-block: 14px;
+  }
+
+  .footer-bottom p {
+    max-width: 80%;
+    line-height: 1.7;
+  }
+}
