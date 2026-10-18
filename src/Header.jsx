@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./header.css";
+import "./Header.css";
 
 const navItems = [
   { label: "Home", href: "#home" },
