@@ -1,9 +1,11 @@
+
 /* ---------- DSA & DevOps ---------- */
 
 .dsa-layout {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
+  align-items: start;
 }
 
 .dsa-card {
@@ -24,6 +26,7 @@
 }
 
 .dsa-card-body {
+  min-width: 0;
   padding-bottom: 2px;
 }
 
@@ -43,15 +46,15 @@
 }
 
 .dsa-logo {
-  flex: none;
   display: inline-flex;
+  flex: 0 0 38px;
   width: 38px;
   height: 38px;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   border-radius: 11px;
   background: #fff;
-  overflow: hidden;
 }
 
 .dsa-logo img {
@@ -59,6 +62,8 @@
   height: 22px;
   object-fit: contain;
 }
+
+/* ---------- LeetCode Stats ---------- */
 
 .leetcode-stats {
   display: flex;
@@ -75,8 +80,8 @@
 
 .leetcode-stat strong {
   background: linear-gradient(100deg, #a78bfa, #22d3ee);
-  -webkit-background-clip: text;
   background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: "Space Grotesk", sans-serif;
   font-size: 28px;
@@ -99,43 +104,100 @@
 
 .dsa-button {
   width: 100%;
+  margin-bottom:40px;
 }
+
+
 
 .topics-card .tag-list {
   margin-top: 0;
+  margin-bottom: 10px;
+}
+
+/* ---------- Compact DevOps & Cloud ---------- */
+
+.devops-card .dsa-card-body {
+  padding-bottom: 0;
+}
+
+.devops-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 12px;
+  padding: 5px 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-2);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.devops-status-dot {
+  width: 6px;
+  height: 6px;
+  flex: 0 0 6px;
+  border-radius: 50%;
+  background: var(--accent-cyan, #38bdf8);
 }
 
 .devops-icons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-bottom: 14px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px 8px;
+  margin-bottom: 10px;
 }
 
-.devops-icons img {
-  width: 28px;
-  height: 28px;
+.devops-tool {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+  text-align: center;
+}
+
+.devops-tool img,
+.devops-tool .devops-icon-custom {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  align-items: center;
+  justify-content: center;
   object-fit: contain;
+}
+
+.devops-tool img {
   transition: transform 180ms ease;
 }
 
-.devops-icons img:hover {
-  transform: translateY(-2px) scale(1.08);
+.devops-tool img:hover {
+  transform: translateY(-2px);
 }
 
 .devops-icon-custom {
-  display: inline-flex;
-  width: 28px;
-  height: 28px;
-  align-items: center;
-  justify-content: center;
-  color: #a78bfa;
+  color: var(--text-2);
 }
 
 .devops-icon-custom svg {
-  width: 24px;
-  height: 24px;
+  display: block;
+  width: 22px;
+  height: 22px;
 }
+
+.devops-tool-name {
+  max-width: 100%;
+  color: var(--text-2);
+  font-size: 11px;
+  line-height: 1.35;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+/* Shared descriptive text */
 
 .devops-body p,
 .dsa-card-body > p {
@@ -145,10 +207,86 @@
   line-height: 1.65;
 }
 
+.devops-card .devops-description {
+  margin: 10px 0 0;
+  color: var(--text-2);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 980px) {
   .dsa-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .devops-card {
+    grid-column: 1 / -1;
+  }
+
+  .devops-icons {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px 10px;
+  }
+}
+
+@media (max-width: 640px) {
+  .dsa-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .devops-card {
+    grid-column: auto;
+  }
+
+  .dsa-card {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .dsa-card .card-toggle {
+    padding-bottom: 14px;
+  }
+
+  .devops-status {
+    margin-bottom: 10px;
+  }
+
+  .devops-icons {
+    gap: 13px 8px;
+  }
+}
+
+@media (max-width: 380px) {
+  .dsa-card {
+    padding: 15px;
+  }
+
+  .devops-icons {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px 5px;
+  }
+
+  .devops-tool-name {
+    font-size: 10px;
+  }
+
+  .devops-card .devops-description {
+    font-size: 11px;
+  }
+}
+
+/* Respect reduced-motion preferences. */
+
+@media (prefers-reduced-motion: reduce) {
+  .devops-tool img {
+    transition: none;
+  }
+
+  .devops-tool img:hover {
+    transform: none;
   }
 }

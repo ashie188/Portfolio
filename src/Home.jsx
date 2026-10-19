@@ -225,7 +225,7 @@ const DEVICON = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons";
 
 const skillGroups = [
   {
-    title: "Frontend",
+    title: "Frontend Development",
     icon: categoryIcons.frontend,
     skills: [
       { name: "React", icon: `${DEVICON}/react/react-original.svg` },
@@ -239,10 +239,11 @@ const skillGroups = [
         name: "Tailwind CSS",
         icon: `${DEVICON}/tailwindcss/tailwindcss-original.svg`,
       },
+      { name: "Vite", icon: `${DEVICON}/vitejs/vitejs-original.svg` },
     ],
   },
   {
-    title: "Backend",
+    title: "Backend & Databases",
     icon: categoryIcons.backend,
     skills: [
       { name: "Node.js", icon: `${DEVICON}/nodejs/nodejs-original.svg` },
@@ -251,22 +252,51 @@ const skillGroups = [
         name: "PostgreSQL",
         icon: `${DEVICON}/postgresql/postgresql-original.svg`,
       },
-      { name: "REST API", customIcon: categoryIcons.link },
+      { name: "MySQL", icon: `${DEVICON}/mysql/mysql-original.svg` },
+      { name: "REST APIs", customIcon: categoryIcons.link },
+      { name: "CRUD", customIcon: categoryIcons.refresh },
     ],
   },
   {
-    title: "Tools & Others",
+    title: "Languages & Problem Solving",
     icon: categoryIcons.tools,
+    skills: [
+      { name: "Java", icon: `${DEVICON}/java/java-original.svg` },
+      {
+        name: "JavaScript",
+        icon: `${DEVICON}/javascript/javascript-original.svg`,
+      },
+      {
+        name: "SQL",
+        icon: `${DEVICON}/azuresqldatabase/azuresqldatabase-original.svg`,
+      },
+      { name: "DSA", customIcon: categoryIcons.frontend },
+      { name: "Problem Solving", customIcon: categoryIcons.bulb },
+    ],
+  },
+  {
+    title: "Tools & Deployment",
+    icon: categoryIcons.cloud,
     skills: [
       { name: "Git", icon: `${DEVICON}/git/git-original.svg` },
       { name: "GitHub", icon: `${DEVICON}/github/github-original.svg` },
+      { name: "VS Code", icon: `${DEVICON}/vscode/vscode-original.svg` },
+      { name: "Postman", icon: `${DEVICON}/postman/postman-original.svg` },
+      { name: "Vercel", icon: `${DEVICON}/vercel/vercel-original.svg` },
+      { name: "Render", customIcon: categoryIcons.cloud },
+    ],
+  },
+  {
+    title: "DevOps & Cloud",
+    icon: categoryIcons.cloud,
+    skills: [
       { name: "Docker", icon: `${DEVICON}/docker/docker-original.svg` },
       {
         name: "AWS",
         icon: `${DEVICON}/amazonwebservices/amazonwebservices-original.svg`,
       },
-      { name: "VS Code", icon: `${DEVICON}/vscode/vscode-original.svg` },
-      { name: "Postman", icon: `${DEVICON}/postman/postman-original.svg` },
+      { name: "Linux", icon: `${DEVICON}/linux/linux-original.svg` },
+      { name: "CI/CD", customIcon: categoryIcons.refresh },
     ],
   },
 ];
@@ -287,37 +317,35 @@ const dsaTopics = [
 ];
 
 const devOpsTools = [
-  { name: "Docker", icon: `${DEVICON}/docker/docker-original.svg` },
-  { name: "AWS", icon: "https://cdn.simpleicons.org/amazonaws/FF9900" },
   { name: "Linux", icon: `${DEVICON}/linux/linux-original.svg` },
+  { name: "AWS", icon: "https://cdn.simpleicons.org/amazonaws/FF9900" },
+  { name: "Docker", icon: `${DEVICON}/docker/docker-original.svg` },
+  { name: "Jenkins", icon: `${DEVICON}/jenkins/jenkins-original.svg` },
   { name: "CI/CD", customIcon: categoryIcons.refresh },
+  { name: "Terraform", icon: `${DEVICON}/terraform/terraform-original.svg` },
+  { name: "Ansible", icon: `${DEVICON}/ansible/ansible-original.svg` },
+  { name: "Kubernetes", icon: `${DEVICON}/kubernetes/kubernetes-original.svg` },
 ];
 
 const certifications = [
   {
-    name: "AWS Cloud Practitioner",
-    issuer: "Amazon Web Services",
-    year: "2024",
-    logo: "https://cdn.simpleicons.org/amazonaws/FF9900",
+    name: "Learn Java Programming — Beginner to Master",
+    issuer: "Abdul Bari · Udemy",
+    year: "Nov 2023 – Jul 2025",
+    logo: "https://cdn.simpleicons.org/udemy/A435F0",
   },
   {
-    name: "DevOps Essentials",
-    issuer: "Simplilearn",
-    year: "2024",
-    mark: "S",
-    markBackground: "linear-gradient(135deg,#00A9E0,#0067B9)",
+    name: "Full Stack Web Development Bootcamp",
+    issuer: "Angela Yu · Udemy",
+    year: "Apr 2025 – Jul 2025",
+    logo: "https://cdn.simpleicons.org/udemy/A435F0",
   },
   {
-    name: "Java Programming",
-    issuer: "HackerRank",
-    year: "2023",
-    logo: "https://cdn.simpleicons.org/hackerrank/00EA64",
-  },
-  {
-    name: "Python",
-    issuer: "HackerRank",
-    year: "2023",
-    logo: "https://cdn.simpleicons.org/python/3776AB",
+    name: "DevOps Fundamentals",
+    issuer: "Imran Teli",
+    year: "Nov 2025 – Present · In progress",
+    mark: "D",
+    markBackground: "linear-gradient(135deg, #6D4AFF, #2563EB)",
   },
 ];
 
@@ -935,26 +963,17 @@ function ProjectCardCompact({ project }) {
       <div className="project-card-content">
         <p className="project-category">{project.category}</p>
 
-        <h3>{project.name}</h3>
+        <div className="compact-project-heading">
+          <h3>{project.name}</h3>
 
-        <p className="project-description">{project.description}</p>
-
-        <div className="tag-list" aria-label={`${project.name} technologies`}>
-          {project.stack.slice(0, 3).map((technology) => (
-            <span className="tag" key={technology}>
-              {technology}
-            </span>
-          ))}
-        </div>
-
-        {project.github && (
-          <div className="project-actions compact-project-actions">
+          {project.github && (
             <a
-              className="button button-outline"
+              className="compact-code-link"
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`View ${project.name} source code on GitHub`}
+              title="View source code on GitHub"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -969,10 +988,23 @@ function ProjectCardCompact({ project }) {
                 <path d="M12 4h8v8" />
                 <path d="M20 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h5" />
               </svg>
-              View Code
+              <span>Code</span>
             </a>
-          </div>
-        )}
+          )}
+        </div>
+
+        <p className="project-description">{project.description}</p>
+
+        <div
+          className="tag-list compact-project-tags"
+          aria-label={`${project.name} technologies`}
+        >
+          {project.stack.slice(0, 3).map((technology) => (
+            <span className="tag" key={technology}>
+              {technology}
+            </span>
+          ))}
+        </div>
       </div>
     </article>
   );
@@ -1039,17 +1071,16 @@ const experienceBullets = [
 ];
 
 const sportiloFounderBullets = [
-  "Founded Sportilo and took the product from the initial idea through development and launch.",
-  "Independently handled full-stack development, implementing frontend experiences, backend functionality, APIs, and database integration.",
-  "Worked on product features for discovering players, creating and joining matches, and connecting sports and gaming communities.",
-  "Managed social media and marketing activities, including promotional content and communicating the product's value to potential users.",
-  "Continue improving the platform based on product needs and user feedback.",
+  "Founded Sportilo and led its development from the initial idea to a live product.",
+  "Built full-stack features across the frontend, backend, APIs, and database.",
+  "Developed features for discovering players and creating or joining sports and gaming matches.",
+  "Independently managed social media, promotional content, and product marketing.",
+  "Continue improving the platform as it evolves.",
 ];
 
 const educationBullets = [
-  "Currently in final year.",
-  "Focused on full-stack development, DSA and building real-world projects.",
-  "Actively participating in technical learning and practical development.",
+  "Completed a B.Tech in Information Technology in 2026.",
+  "Focused on full-stack development, data structures and algorithms, and practical software projects.",
 ];
 
 function ExperienceEducation() {
@@ -1080,7 +1111,7 @@ function ExperienceEducation() {
               <div className="entry-main">
                 <div className="entry-top">
                   <h4>Sportilo</h4>
-                  <span className="date-chip">Founder Project</span>
+                  <span className="date-chip">Jul 2026 – Present</span>
                 </div>
 
                 <p className="entry-role">Founder & Technical Lead</p>
@@ -1139,7 +1170,7 @@ function ExperienceEducation() {
               </span>
               <div className="entry-main">
                 <div className="entry-top">
-                  <h4>SGGS College, Nanded</h4>
+                  <h4>SGGS Institute of Engineering and Technology</h4>
                   <span className="date-chip">2022 – 2026</span>
                 </div>
                 <p className="entry-role">B.Tech in Information Technology</p>
@@ -1266,33 +1297,33 @@ function DsaDevOps() {
           title="DevOps & Cloud"
         >
           <div className="dsa-card-body">
-            <div className="devops-icons">
-              {devOpsTools.map((tool) =>
-                tool.customIcon ? (
-                  <span
-                    className="devops-icon-custom"
-                    key={tool.name}
-                    title={tool.name}
-                  >
-                    {tool.customIcon}
-                  </span>
-                ) : (
-                  <img
-                    src={tool.icon}
-                    alt={tool.name}
-                    title={tool.name}
-                    key={tool.name}
-                    loading="lazy"
-                    width="28"
-                    height="28"
-                  />
-                ),
-              )}
+            <div className="devops-status">
+              <span className="devops-status-dot" aria-hidden="true" />
+              <span>Currently Exploring</span>
             </div>
-            <p>
-              Building and deploying real-world projects using modern DevOps
-              tools.
-            </p>
+
+            <div className="devops-icons">
+              {devOpsTools.map((tool) => (
+                <div className="devops-tool" key={tool.name}>
+                  {tool.customIcon ? (
+                    <span className="devops-icon-custom" title={tool.name}>
+                      {tool.customIcon}
+                    </span>
+                  ) : (
+                    <img
+                      src={tool.icon}
+                      alt={tool.name}
+                      title={tool.name}
+                      loading="lazy"
+                      width="28"
+                      height="28"
+                    />
+                  )}
+
+                  <span className="devops-tool-name">{tool.name}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </AccordionCard>
       </div>
@@ -1325,22 +1356,6 @@ const contactChannels = [
 ];
 
 function Contact() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    const form = new FormData(event.currentTarget);
-    const name = form.get("name");
-    const email = form.get("email");
-    const message = form.get("message");
-
-    const subject = encodeURIComponent(`Portfolio enquiry from ${name}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\n${message}`,
-    );
-
-    window.location.href = `mailto:ashutoshhamand@gmail.com?subject=${subject}&body=${body}`;
-  };
-
   return (
     <section
       className="section-shell section-block contact-section"
@@ -1350,74 +1365,63 @@ function Contact() {
         number="08"
         eyebrow="Contact Me"
         title="Let's Connect"
-        description="Feel free to reach out for opportunities, collaborations or just to have a chat about technology."
+        description="Have a project, opportunity, or question? Feel free to reach out."
       />
 
       <div className="contact-layout">
-        <div className="contact-cards">
-          {contactChannels.map((channel) => (
-            <a
-              key={channel.label}
-              className="contact-link"
-              href={channel.href}
-              target={channel.href.startsWith("mailto:") ? undefined : "_blank"}
-              rel="noreferrer"
-            >
-              <span className="contact-icon">{channel.icon}</span>
-              <span className="contact-text">
-                <strong>{channel.label}</strong>
-                <small className="contact-value">{channel.value}</small>
-                <small className="contact-note">{channel.note}</small>
-              </span>
-              <span className="contact-arrow" aria-hidden="true">
-                ›
-              </span>
-            </a>
-          ))}
+        <div className="contact-intro">
+          <span className="contact-eyebrow">GET IN TOUCH</span>
+          <h3>
+            Let's build something <span>meaningful.</span>
+          </h3>
+          <p>
+            Open to job opportunities, freelance projects, and collaborations.
+            Let's talk about what we can build together.
+          </p>
         </div>
 
-        <form className="contact-form" onSubmit={handleSubmit}>
-          <div className="form-row">
-            <label>
-              Name
-              <input
-                name="name"
-                type="text"
-                placeholder="Your name"
-                autoComplete="name"
-                required
-              />
-            </label>
-            <label>
-              Email
-              <input
-                name="email"
-                type="email"
-                placeholder="you@example.com"
-                autoComplete="email"
-                required
-              />
-            </label>
-          </div>
+        <div className="contact-cards">
+          <a
+            className="contact-link"
+            href="mailto:ashutoshhamand145@gmail.com"
+            aria-label="Email Ashutosh Hamand"
+          >
+            <span className="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="m3 7 9 6 9-6" />
+              </svg>
+            </span>
+            <span className="contact-text">
+              <span className="contact-label">EMAIL</span>
+              <strong>ashutoshhamand145@gmail.com</strong>
+              <small>For opportunities and enquiries</small>
+            </span>
+            <span className="contact-arrow" aria-hidden="true">
+              ↗
+            </span>
+          </a>
 
-          <label>
-            Message
-            <textarea
-              name="message"
-              rows={5}
-              placeholder="Tell me about your opportunity or idea..."
-              required
-            />
-          </label>
-
-          <button className="button button-primary form-submit" type="submit">
-            Send Message ↗
-          </button>
-
-          <p className="form-note">
-            Submitting opens your email application with the message prefilled.
-          </p>
-        </form>
+          <a
+            className="contact-link"
+            href="tel:+917057418301"
+            aria-label="Call Ashutosh Hamand"
+          >
+            <span className="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 11.19 18a19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.09 3.18 2 2 0 0 1 4.08 1h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.11L8.06 8.9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.84.58 2.8.7A2 2 0 0 1 22 16.92Z" />
+              </svg>
+            </span>
+            <span className="contact-text">
+              <span className="contact-label">PHONE</span>
+              <strong>+91 70574 18301</strong>
+              <small>Let's discuss your requirements</small>
+            </span>
+            <span className="contact-arrow" aria-hidden="true">
+              ↗
+            </span>
+          </a>
+        </div>
       </div>
     </section>
   );

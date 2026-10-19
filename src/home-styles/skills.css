@@ -1,14 +1,16 @@
-/* ---------- Skills ---------- */
+
+/* ---------- Skills & Technologies ---------- */
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
 }
 
 .skill-card {
+  min-width: 0;
   border: 1px solid rgba(139, 92, 246, 0.22);
-  border-radius: 18px;
+  border-radius: 16px;
   background: linear-gradient(
     180deg,
     rgba(139, 92, 246, 0.07),
@@ -22,19 +24,20 @@
 }
 
 .skill-card:hover {
-  border-color: rgba(139, 92, 246, 0.5);
-  transform: translateY(-3px);
-  box-shadow: 0 14px 34px rgba(76, 29, 149, 0.28);
+  border-color: rgba(139, 92, 246, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(76, 29, 149, 0.2);
 }
 
-/* ---------- Shared accordion behaviour ---------- */
+/* ---------- Shared Accordion Behaviour ---------- */
 
 .card-toggle {
   display: flex;
   width: 100%;
+  min-width: 0;
   align-items: center;
-  gap: 12px;
-  padding: 18px 20px;
+  gap: 11px;
+  padding: 15px 17px;
   border: 0;
   background: none;
   color: var(--text);
@@ -44,50 +47,52 @@
 }
 
 .card-toggle h3 {
+  min-width: 0;
   margin: 0;
   font-family: "Space Grotesk", sans-serif;
-  font-size: 16.5px;
+  font-size: 16px;
   font-weight: 700;
   letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
 }
 
 .card-toggle:focus-visible {
   outline: 2px solid var(--violet);
   outline-offset: 2px;
-  border-radius: 12px;
+  border-radius: 10px;
 }
 
 .card-toggle-icon {
-  flex: none;
   display: inline-flex;
-  width: 38px;
-  height: 38px;
+  width: 35px;
+  height: 35px;
+  flex: 0 0 35px;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(139, 92, 246, 0.35);
-  border-radius: 11px;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 10px;
   background: linear-gradient(
     135deg,
-    rgba(124, 58, 237, 0.32),
-    rgba(34, 211, 238, 0.12)
+    rgba(124, 58, 237, 0.28),
+    rgba(34, 211, 238, 0.1)
   );
   color: #a78bfa;
 }
 
 .card-toggle-icon svg {
-  width: 19px;
-  height: 19px;
+  width: 18px;
+  height: 18px;
 }
 
 .chevron {
-  flex: none;
   display: none;
   width: 18px;
   height: 18px;
+  flex: 0 0 18px;
   margin-left: auto;
   color: var(--muted);
   transition:
-    transform 300ms ease,
+    transform 250ms ease,
     color 200ms ease;
 }
 
@@ -99,7 +104,7 @@
 .accordion-content {
   display: grid;
   grid-template-rows: 1fr;
-  transition: grid-template-rows 320ms ease;
+  transition: grid-template-rows 280ms ease;
 }
 
 .accordion-inner {
@@ -107,76 +112,138 @@
   overflow: hidden;
 }
 
-/* ---------- Skill items ---------- */
+/* ---------- Skill Items ---------- */
 
 .skill-card-body {
-  padding: 2px 20px 20px;
+  padding: 0 17px 17px;
 }
 
 .skill-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 18px 14px;
+  justify-content: flex-start;
+  gap: 15px 11px;
 }
 
 .skill-item {
   display: flex;
-  width: 62px;
+  width: 60px;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .skill-item img {
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   object-fit: contain;
   transition: transform 180ms ease;
 }
 
 .skill-item:hover img {
-  transform: translateY(-3px) scale(1.1);
+  transform: translateY(-2px) scale(1.06);
 }
 
 .skill-custom-icon {
   display: inline-flex;
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   align-items: center;
   justify-content: center;
   color: #a78bfa;
 }
 
 .skill-custom-icon svg {
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
 }
 
 .skill-item span {
   color: var(--secondary);
   font-size: 11px;
-  line-height: 1.3;
+  line-height: 1.35;
   text-align: center;
+  overflow-wrap: anywhere;
 }
 
-/* ---------- Responsive ---------- */
+/* ---------- Responsive Layout ---------- */
 
-@media (max-width: 980px) {
+@media (max-width: 1100px) {
   .skills-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
   }
 }
 
 @media (max-width: 720px) {
+  .skills-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 13px;
+  }
+
   .accordion-card:not(.is-open) .accordion-content {
     grid-template-rows: 0fr;
   }
 
   .card-toggle {
     cursor: pointer;
+    padding: 14px 16px;
+  }
+
+  .card-toggle-icon {
+    width: 33px;
+    height: 33px;
+    flex-basis: 33px;
   }
 
   .chevron {
     display: block;
+  }
+
+  .skill-card-body {
+    padding: 0 16px 16px;
+  }
+
+  .skill-list {
+    gap: 14px 10px;
+  }
+}
+
+@media (max-width: 380px) {
+  .card-toggle {
+    gap: 9px;
+    padding: 13px 14px;
+  }
+
+  .card-toggle h3 {
+    font-size: 15px;
+  }
+
+  .skill-card-body {
+    padding: 0 14px 15px;
+  }
+
+  .skill-list {
+    gap: 13px 8px;
+  }
+
+  .skill-item {
+    width: 56px;
+  }
+}
+
+/* ---------- Motion Accessibility ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-card,
+  .skill-item img,
+  .chevron,
+  .accordion-content {
+    transition: none;
+  }
+
+  .skill-card:hover,
+  .skill-item:hover img {
+    transform: none;
   }
 }

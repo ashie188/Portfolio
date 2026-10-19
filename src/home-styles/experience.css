@@ -115,7 +115,6 @@
   color: var(--secondary);
   font-size: 13.5px;
   line-height: 1.6;
-  
 }
 
 .journey-card li::marker {
@@ -243,5 +242,26 @@
 
   .cert-info {
     display: none;
+  }
+}
+
+.journey-entry .entry-main {
+  min-width: 0;
+}
+
+.journey-entry .entry-top h4 {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.journey-entry .date-chip {
+  flex-shrink: 0;
+}
+
+@media (max-width: 520px) {
+  .journey-entry .entry-top {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 6px;
   }
 }

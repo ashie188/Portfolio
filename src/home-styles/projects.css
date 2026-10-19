@@ -94,8 +94,8 @@
 
 .sportilo-visual::after {
   position: absolute;
-  inset: 0;
   z-index: 1;
+  inset: 0;
   background: linear-gradient(90deg, rgba(10, 11, 20, 0.38), transparent 75%);
   content: "";
   pointer-events: none;
@@ -103,9 +103,9 @@
 
 .sportilo-chips {
   position: absolute;
+  z-index: 2;
   top: 50%;
   right: 20px;
-  z-index: 2;
   display: flex;
   max-width: 75%;
   flex-direction: column;
@@ -129,9 +129,9 @@
 
 .sportilo-emoji {
   position: absolute;
+  z-index: 2;
   bottom: 18px;
   left: 20px;
-  z-index: 2;
   display: flex;
   gap: 12px;
   font-size: 20px;
@@ -148,10 +148,10 @@
 
 .featured-grid {
   display: grid;
+  min-width: 0;
   grid-auto-columns: calc((100% - 48px) / 3);
   grid-auto-flow: column;
   gap: 24px;
-  min-width: 0;
   margin-inline: -4px;
   padding: 4px;
   overflow-x: auto;
@@ -188,7 +188,7 @@
   cursor: pointer;
   transition:
     width 220ms ease,
-    background 220ms ease;
+    background-color 220ms ease;
 }
 
 .carousel-dot[aria-current="true"] {
@@ -197,7 +197,7 @@
 }
 
 /* =========================================================
-   SHARED PROJECT CARD
+   SHARED PROJECT CARDS
    ========================================================= */
 
 .project-card {
@@ -221,8 +221,8 @@
 
 .project-image {
   position: relative;
-  aspect-ratio: 16 / 9;
   min-width: 0;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   border-bottom: 1px solid rgba(139, 92, 246, 0.16);
   background: var(--surface);
@@ -239,8 +239,8 @@
 
 .project-card-content {
   display: flex;
-  flex: 1;
   min-width: 0;
+  flex: 1;
   flex-direction: column;
   align-items: flex-start;
   padding: 20px;
@@ -320,39 +320,116 @@
 }
 
 /* =========================================================
-   ALL PROJECTS GRID
+   ALL PROJECTS: COMPACT GALLERY
    ========================================================= */
 
 .all-projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: stretch;
-  gap: 22px;
+  gap: 18px;
 }
 
 .project-card-compact {
+  min-width: 0;
   height: 100%;
+  border-radius: 14px;
 }
 
 .project-card-compact .project-image {
-  aspect-ratio: 16 / 9;
+  flex: none;
+  aspect-ratio: 16 / 7;
 }
 
 .project-card-compact .project-card-content {
-  padding: 20px;
+  min-width: 0;
+  padding: 13px 14px 15px;
 }
 
-.project-card-compact h3 {
-  font-size: 18px;
+.project-card-compact .project-category {
+  margin-bottom: 5px;
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.compact-project-heading {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.project-card-compact .compact-project-heading h3 {
+  min-width: 0;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.compact-code-link {
+  display: inline-flex;
+  min-height: 30px;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 5px 7px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.025);
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.compact-code-link svg {
+  display: block;
+  width: 13px;
+  height: 13px;
+  flex: none;
 }
 
 .project-card-compact .project-description {
-  flex: 1;
+  display: -webkit-box;
+  width: 100%;
+  margin: 8px 0 0;
+  overflow: hidden;
+  color: var(--secondary);
+  font-size: 12px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
 }
 
-.project-card-compact .tag-list {
-  margin-top: 16px;
+.project-card-compact .compact-project-tags {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 10px;
 }
+
+.project-card-compact .compact-project-tags .tag {
+  min-height: 0;
+  max-width: 100%;
+  padding: 4px 7px;
+  font-size: 10px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+/* Retained for any project cards that use full-width action buttons. */
 
 .compact-project-actions {
   width: 100%;
@@ -381,6 +458,7 @@
 
 .project-actions a:focus-visible,
 .compact-link:focus-visible,
+.compact-code-link:focus-visible,
 .carousel-dot:focus-visible {
   outline: 2px solid var(--cyan);
   outline-offset: 4px;
@@ -397,13 +475,18 @@
     transform: scale(1.025);
   }
 
-  .compact-project-actions .button:hover {
+  .compact-project-actions .button:hover,
+  .compact-link:hover {
     border-color: var(--violet);
   }
 
   .compact-link:hover {
-    border-color: var(--violet);
     color: var(--text);
+  }
+
+  .compact-code-link:hover {
+    border-color: var(--violet);
+    background: rgba(139, 92, 246, 0.08);
   }
 }
 
@@ -411,12 +494,14 @@
    RESPONSIVE: TABLETS & SMALL LAPTOPS
    ========================================================= */
 
-@media (max-width: 1100px) {
+@media (max-width: 1199px) {
   .all-projects-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
   }
+}
 
+@media (max-width: 1100px) {
   .featured-grid {
     grid-auto-columns: calc((100% - 24px) / 2);
   }
@@ -427,6 +512,17 @@
 
   .sportilo-visual {
     min-height: 340px;
+  }
+}
+
+@media (max-width: 900px) {
+  .all-projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .project-card-compact .project-image {
+    aspect-ratio: 16 / 8;
   }
 }
 
@@ -480,18 +576,11 @@
     gap: 16px;
   }
 
-  .all-projects-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
-  }
-
-  .project-card-content,
-  .project-card-compact .project-card-content {
+  .project-card-content {
     padding: 17px;
   }
 
-  .project-card h3,
-  .project-card-compact h3 {
+  .project-card h3 {
     font-size: 17px;
   }
 
@@ -506,42 +595,64 @@
 }
 
 /* =========================================================
-   RESPONSIVE: NARROW PHONES (360px+)
+   RESPONSIVE: NARROW PHONES
    ========================================================= */
 
 @media (max-width: 520px) {
   .all-projects-grid {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
   }
 
-  .project-card-compact .project-image {
-    aspect-ratio: 16 / 9;
+  .project-card-compact {
+    border-radius: 11px;
   }
 
-  .project-card-content,
   .project-card-compact .project-card-content {
-    padding: 18px;
+    padding: 10px;
   }
 
-  .project-card h3,
-  .project-card-compact h3 {
-    font-size: 19px;
+  .project-card-compact .project-category {
+    font-size: 9px;
+    letter-spacing: 0.025em;
   }
 
-  .project-description {
-    font-size: 14px;
-    line-height: 1.7;
+  .project-card-compact .compact-project-heading {
+    align-items: flex-start;
+    gap: 5px;
   }
 
-  .project-card-content > .tag-list {
-    gap: 8px;
-    margin-top: 14px;
+  .project-card-compact .compact-project-heading h3 {
+    font-size: 13px;
+    line-height: 1.35;
   }
 
-  .project-card-content .tag {
+  .project-card-compact .compact-code-link {
+    min-height: 27px;
+    gap: 3px;
+    padding: 5px;
+    font-size: 10px;
+  }
+
+  .project-card-compact .compact-code-link svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .project-card-compact .project-description {
+    margin-top: 7px;
     font-size: 11px;
-    padding: 5px 10px;
+    line-height: 1.45;
+  }
+
+  .project-card-compact .compact-project-tags {
+    gap: 4px;
+    margin-top: 8px;
+  }
+
+  .project-card-compact .compact-project-tags .tag {
+    padding: 3px 5px;
+    font-size: 9px;
   }
 
   .compact-project-actions {
@@ -549,7 +660,6 @@
   }
 
   .compact-project-actions .button {
-    width: 100%;
     min-height: 44px;
   }
 
@@ -578,10 +688,6 @@
     max-width: 80%;
   }
 }
-
-/* =========================================================
-   RESPONSIVE: VERY NARROW PHONES
-   ========================================================= */
 
 @media (max-width: 380px) {
   .sportilo-copy {
@@ -613,22 +719,21 @@
     font-size: 15px;
   }
 
-  .project-card-content,
   .project-card-compact .project-card-content {
-    padding: 16px;
+    padding: 8px;
   }
 
-  .project-card h3,
-  .project-card-compact h3 {
-    font-size: 18px;
+  .project-card-compact .compact-project-heading h3 {
+    font-size: 12px;
   }
 
-  .project-description {
-    font-size: 13.5px;
+  .project-card-compact .compact-code-link {
+    padding: 4px;
+    font-size: 9px;
   }
 
-  .project-actions .button {
-    font-size: 13px;
+  .project-card-compact .project-description {
+    font-size: 10.5px;
   }
 }
 
@@ -641,7 +746,9 @@
   .project-image img,
   .carousel-dot,
   .project-actions .button,
-  .compact-link {
+  .compact-project-actions .button,
+  .compact-link,
+  .compact-code-link {
     transition: none;
   }
 
